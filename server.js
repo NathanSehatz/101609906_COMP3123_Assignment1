@@ -3,18 +3,22 @@ const dotenv = require("dotenv");
 const helmet = require("helmet");
 const connectDB = require("./config/db");
 const userRoutes = require("./routes/userRoutes");
+const employeeRoutes = require("./routes/employeeRoutes");
+
+const { apiLimiter } = require("./middleware/rateLimiter");
+const { notFound, errorHandler } = require("./middleware/errorMiddleware");
 
 dotenv.config();
 
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-// Middleware
 app.use(helmet());
 app.use(express.json());
 app.use("/api/v1/user", userRoutes);
+app.use("/api/v1/emp", employeeRoutes);
+app.use("/api", apiLimiter);
 
-// Health check endpoint
 app.get("/health", (req, res) => {
   res.status(200).json({
     status: "OK",
@@ -22,7 +26,9 @@ app.get("/health", (req, res) => {
   });
 });
 
-// Connect to MongoDB before starting server
+app.use(notFound);
+app.use(errorHandler);
+
 const startServer = async () => {
   await connectDB();
 
