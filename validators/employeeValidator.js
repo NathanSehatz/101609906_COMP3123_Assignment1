@@ -1,5 +1,7 @@
-const { body, param, query, validationResult } = require("express-validator");
 const mongoose = require("mongoose");
+const logger = require("../utils/logger");
+
+const { body, param, query, validationResult } = require("express-validator");
 
 const employeeValidation = [
   body("first_name")
@@ -58,6 +60,12 @@ const validateEmployee = (req, res, next) => {
   const errors = validationResult(req);
 
   if (!errors.isEmpty()) {
+    logger.warn("Employee request validation failed", {
+      method: req.method,
+      path: req.path,
+      fields: [...new Set(errors.array().map(error => error.path))]
+    });
+
     return res.status(400).json({
       message: "Validation failed",
       errors: errors.array()

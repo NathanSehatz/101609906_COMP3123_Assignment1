@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 const Employee = require("../models/Employee");
+const logger = require("../utils/logger");
 
 const getEmployees = async (req, res, next) => {
   try {
@@ -44,6 +45,12 @@ const getEmployeeById = async (req, res, next) => {
     });
 
     if (!employee) {
+      logger.warn("Employee access denied or employee not found", {
+        userId: req.user._id.toString(),
+        method: req.method,
+        path: req.path
+      });
+    
       return res.status(404).json({
         message: "Employee not found"
       });
@@ -88,6 +95,12 @@ const updateEmployee = async (req, res, next) => {
     );
 
     if (!employee) {
+      logger.warn("Employee access denied or employee not found", {
+        userId: req.user._id.toString(),
+        method: req.method,
+        path: req.path
+      });
+    
       return res.status(404).json({
         message: "Employee not found"
       });
@@ -110,6 +123,12 @@ const deleteEmployee = async (req, res, next) => {
     });
 
     if (!employee) {
+      logger.warn("Employee access denied or employee not found", {
+        userId: req.user._id.toString(),
+        method: req.method,
+        path: req.path
+      });
+    
       return res.status(404).json({
         message: "Employee not found"
       });

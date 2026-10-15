@@ -1,7 +1,11 @@
 const express = require("express");
 const dotenv = require("dotenv");
 const helmet = require("helmet");
+const morgan = require("morgan");
+
 const connectDB = require("./config/db");
+const logger = require("./utils/logger");
+
 const userRoutes = require("./routes/userRoutes");
 const employeeRoutes = require("./routes/employeeRoutes");
 
@@ -14,10 +18,20 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 app.use(helmet());
+
+app.use(
+  morgan("combined", {
+    stream: {
+      write: (message) => logger.info(message.trim())
+    }
+  })
+);
+
 app.use(express.json());
+app.use("/api", apiLimiter);
+
 app.use("/api/v1/user", userRoutes);
 app.use("/api/v1/emp", employeeRoutes);
-app.use("/api", apiLimiter);
 
 app.get("/health", (req, res) => {
   res.status(200).json({
@@ -33,6 +47,7 @@ const startServer = async () => {
   await connectDB();
 
   app.listen(PORT, () => {
+    logger.info(`Server started on port ${PORT}`);
     console.log(`Server running on http://localhost:${PORT}`);
   });
 };

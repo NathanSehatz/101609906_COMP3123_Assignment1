@@ -1,3 +1,5 @@
+const logger = require("../utils/logger");
+
 const { body, validationResult } = require("express-validator");
 
 const signupValidation = [
@@ -48,18 +50,24 @@ const loginValidation = [
     })
   ];
 
-const validate = (req, res, next) => {
-  const errors = validationResult(req);
-
-  if (!errors.isEmpty()) {
-    return res.status(400).json({
-      message: "Validation failed",
-      errors: errors.array()
-    });
-  }
-
-  next();
-};
+  const validate = (req, res, next) => {
+    const errors = validationResult(req);
+  
+    if (!errors.isEmpty()) {
+      logger.warn("User request validation failed", {
+        method: req.method,
+        path: req.path,
+        fields: [...new Set(errors.array().map(error => error.path))]
+      });
+  
+      return res.status(400).json({
+        message: "Validation failed",
+        errors: errors.array()
+      });
+    }
+  
+    next();
+  };  
 
 module.exports = {
     signupValidation,
