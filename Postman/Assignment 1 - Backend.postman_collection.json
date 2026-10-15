@@ -1,0 +1,1341 @@
+{
+  "info": {
+    "_postman_id": "90f06267-fdcd-4967-8d2b-a07e483b57da",
+    "name": "Assignment 1 - Backend",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "58313464"
+  },
+  "item": [
+    {
+      "name": "User Authentication",
+      "item": [
+        {
+          "name": "Signup - Success (201)",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"username\": \"testuser3\",\n  \"email\": \"testuser3@example.com\",\n  \"password\": \"Password123\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:3000/api/v1/user/signup",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "api",
+                "v1",
+                "user",
+                "signup"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Signup - User B (201)",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"username\": \"testuserB\",\n  \"email\": \"testuserb@example.com\",\n  \"password\": \"Password456\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:3000/api/v1/user/signup",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "api",
+                "v1",
+                "user",
+                "signup"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Signup - Duplicate Email (409)",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"username\": \"differentuser\",\n  \"email\": \"testuser3@example.com\",\n  \"password\": \"Password123\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:3000/api/v1/user/signup",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "api",
+                "v1",
+                "user",
+                "signup"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Signup - Missing Fields (400)",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"username\": \"testuser5\",\n  \"password\": \"Password123\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:3000/api/v1/user/signup",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "api",
+                "v1",
+                "user",
+                "signup"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Signup - Invalid Email (400)",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"username\": \"testuser4\",\n  \"email\": \"testuser4@example.com\",\n  \"password\": \"password\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:3000/api/v1/user/signup",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "api",
+                "v1",
+                "user",
+                "signup"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Signup - Weak Password (400)",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"username\": \"testuser3\",\n  \"email\": \"testuser3@example.com\",\n  \"password\": \"Password123\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:3000/api/v1/user/signup",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "api",
+                "v1",
+                "user",
+                "signup"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Signup - Duplicate User (409)",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"username\": \"testuser3\",\n  \"email\": \"testuser3@example.com\",\n  \"password\": \"Password123\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:3000/api/v1/user/signup",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "api",
+                "v1",
+                "user",
+                "signup"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Login - Username (200)",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"username\": \"testuser3\",\n  \"password\": \"Password123\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:3000/api/v1/user/login",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "api",
+                "v1",
+                "user",
+                "login"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Login - Email (200)",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"testuser3@example.com\",\n  \"password\": \"Password123\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:3000/api/v1/user/login",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "api",
+                "v1",
+                "user",
+                "login"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Login - User B (200)",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"username\": \"testuserB\",\n  \"password\": \"Password456\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:3000/api/v1/user/login",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "api",
+                "v1",
+                "user",
+                "login"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Login - Missing Credentials (400)",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"password\": \"Password123\"\n}\n",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:3000/api/v1/user/login",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "api",
+                "v1",
+                "user",
+                "login"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Login - Invalid Credentials (401)",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"username\": \"testuser3\",\n  \"password\": \"WrongPassword123\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:3000/api/v1/user/login",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "api",
+                "v1",
+                "user",
+                "login"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Employee CRUD",
+      "item": [
+        {
+          "name": "Create Employee - Success (201)",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{jwt_token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"first_name\": \"John\",\n  \"last_name\": \"Smith\",\n  \"email\": \"john.smith@example.com\",\n  \"position\": \"Software Developer\",\n  \"salary\": 75000,\n  \"date_of_joining\": \"2026-10-15\",\n  \"department\": \"IT\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:3000/api/v1/emp/employees",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "api",
+                "v1",
+                "emp",
+                "employees"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Create Employee - User B (201)",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{jwt_token_b}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"first_name\": \"Michael\",\n  \"last_name\": \"Brown\",\n  \"email\": \"michael.brown@example.com\",\n  \"position\": \"Project Manager\",\n  \"salary\": 85000,\n  \"date_of_joining\": \"2026-10-15\",\n  \"department\": \"Operations\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:3000/api/v1/emp/employees",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "api",
+                "v1",
+                "emp",
+                "employees"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Create Employee - For Deletion (201)",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{jwt_token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"first_name\": \"Sarah\",\n  \"last_name\": \"Johnson\",\n  \"email\": \"sarah.johnson@example.com\",\n  \"position\": \"HR Manager\",\n  \"salary\": 80000,\n  \"date_of_joining\": \"2026-09-01\",\n  \"department\": \"Human Resources\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:3000/api/v1/emp/employees",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "api",
+                "v1",
+                "emp",
+                "employees"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get All Employees - Success (200)",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{jwt_token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3000/api/v1/emp/employees",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "api",
+                "v1",
+                "emp",
+                "employees"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Employee By ID - Success (200)",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{jwt_token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:3000/api/v1/emp/employees/6ad11a7520956486cd1034d8",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "api",
+                "v1",
+                "emp",
+                "employees",
+                "6ad11a7520956486cd1034d8"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Update Employee - Success (200)",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{jwt_token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"first_name\": \"John\",\n  \"last_name\": \"Smith\",\n  \"email\": \"john.smith@example.com\",\n  \"position\": \"Senior Software Developer\",\n  \"salary\": 95000,\n  \"date_of_joining\": \"2026-10-15\",\n  \"department\": \"IT\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:3000/api/v1/emp/employees/6ad11a7520956486cd1034d8",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "api",
+                "v1",
+                "emp",
+                "employees",
+                "6ad11a7520956486cd1034d8"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Delete Employee - Success (204)",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{jwt_token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3000/api/v1/emp/employees?eid=6ad110fc20956486cd1034d2",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "api",
+                "v1",
+                "emp",
+                "employees"
+              ],
+              "query": [
+                {
+                  "key": "eid",
+                  "value": "6ad110fc20956486cd1034d2"
+                }
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Error Handling",
+      "item": [
+        {
+          "name": "Invalid Route (404)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3000/api/v1/does-not-exist",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "api",
+                "v1",
+                "does-not-exist"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Malformed JSON (400)",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"username\": \"testuser6\",\n  \"email\": \"testuser6@example.com\",\n  \"password\": \"Password123\"",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:3000/api/v1/user/signup",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "api",
+                "v1",
+                "user",
+                "signup"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Employee Validation",
+      "item": [
+        {
+          "name": "Get Employee - Invalid ID (400)",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{jwt_token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:3000/api/v1/emp/employees/invalid123",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "api",
+                "v1",
+                "emp",
+                "employees",
+                "invalid123"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Create Employee - Invalid Email (400)",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{jwt_token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"first_name\": \"David\",\n  \"last_name\": \"Wilson\",\n  \"email\": \"not-an-email\",\n  \"position\": \"Accountant\",\n  \"salary\": 65000,\n  \"date_of_joining\": \"2026-10-15\",\n  \"department\": \"Finance\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:3000/api/v1/emp/employees",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "api",
+                "v1",
+                "emp",
+                "employees"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Create Employee - Invalid Salary (400)",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{jwt_token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"first_name\": \"David\",\n  \"last_name\": \"Wilson\",\n  \"email\": \"david.wilson@example.com\",\n  \"position\": \"Accountant\",\n  \"salary\": -5000,\n  \"date_of_joining\": \"2026-10-15\",\n  \"department\": \"Finance\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:3000/api/v1/emp/employees",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "api",
+                "v1",
+                "emp",
+                "employees"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Create Employee - Invalid Date (400)",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{jwt_token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"first_name\": \"David\",\n  \"last_name\": \"Wilson\",\n  \"email\": \"david.wilson@example.com\",\n  \"position\": \"Accountant\",\n  \"salary\": 65000,\n  \"date_of_joining\": \"not-a-date\",\n  \"department\": \"Finance\"\n}   ",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:3000/api/v1/emp/employees",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "api",
+                "v1",
+                "emp",
+                "employees"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Create Employee - Missing Fields (400)",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{jwt_token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"first_name\": \"David\",\n  \"last_name\": \"Wilson\",\n  \"email\": \"david.wilson@example.com\",\n  \"salary\": 65000,\n  \"date_of_joining\": \"2026-10-15\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:3000/api/v1/emp/employees",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "api",
+                "v1",
+                "emp",
+                "employees"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Create Employee - Client Ownership Rejected (400)",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{jwt_token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"first_name\": \"David\",\n  \"last_name\": \"Wilson\",\n  \"email\": \"david.wilson@example.com\",\n  \"position\": \"Accountant\",\n  \"salary\": 65000,\n  \"date_of_joining\": \"2026-10-15\",\n  \"department\": \"Finance\",\n  \"user\": \"6acfec0cb4a4a88d637470f1\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:3000/api/v1/emp/employees",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "api",
+                "v1",
+                "emp",
+                "employees"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Authorization Tests",
+      "item": [
+        {
+          "name": "Employees - Invalid JWT (401)",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{invalid_jwt}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3000/api/v1/emp/employees",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "api",
+                "v1",
+                "emp",
+                "employees"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Employees - No JWT (401)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3000/api/v1/emp/employees",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "api",
+                "v1",
+                "emp",
+                "employees"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get User A Employee - As User B (404)",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{jwt_token_b}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:3000/api/v1/emp/employees/6ad11a7520956486cd1034d8",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "api",
+                "v1",
+                "emp",
+                "employees",
+                "6ad11a7520956486cd1034d8"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get User B Employee - As User A (404)",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{jwt_token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:3000/api/v1/emp/employees/6ad11ab620956486cd1034d9",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "api",
+                "v1",
+                "emp",
+                "employees",
+                "6ad11ab620956486cd1034d9"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Update User A Employee - As User B (404)",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{jwt_token_b}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"first_name\": \"John\",\n  \"last_name\": \"Smith\",\n  \"email\": \"john.smith@example.com\",\n  \"position\": \"Project Manager\",\n  \"salary\": 50000,\n  \"date_of_joining\": \"2026-10-15\",\n  \"department\": \"IT\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:3000/api/v1/emp/employees/6ad11a7520956486cd1034d8",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "api",
+                "v1",
+                "emp",
+                "employees",
+                "6ad11a7520956486cd1034d8"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Update User B Employee - As User A (404)",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{jwt_token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"first_name\": \"John\",\n  \"last_name\": \"Smith\",\n  \"email\": \"john.smith@example.com\",\n  \"position\": \"Senior Software Developer\",\n  \"salary\": 95000,\n  \"date_of_joining\": \"2026-10-15\",\n  \"department\": \"IT\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:3000/api/v1/emp/employees/6ad110fc20956486cd1034d2",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "api",
+                "v1",
+                "emp",
+                "employees",
+                "6ad110fc20956486cd1034d2"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Delete User A Employee - As User B (404)",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{jwt_token_b}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3000/api/v1/emp/employees?eid=6ad11a7520956486cd1034d8",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "api",
+                "v1",
+                "emp",
+                "employees"
+              ],
+              "query": [
+                {
+                  "key": "eid",
+                  "value": "6ad11a7520956486cd1034d8"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Delete User B Employee - As User A (404)",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{jwt_token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3000/api/v1/emp/employees?eid=6ad11ab620956486cd1034d9",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "api",
+                "v1",
+                "emp",
+                "employees"
+              ],
+              "query": [
+                {
+                  "key": "eid",
+                  "value": "6ad11ab620956486cd1034d9"
+                }
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Security Tests",
+      "item": [
+        {
+          "name": "Login - Rate Limit Exceeded (429)",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"username\": \"testuser3\",\n  \"password\": \"WrongPassword123\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:3000/api/v1/user/login",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "api",
+                "v1",
+                "user",
+                "login"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Health Check",
+      "item": [
+        {
+          "name": "Health Check - Success (200)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3000/health",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "health"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ]
+}
