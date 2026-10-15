@@ -1,5 +1,9 @@
-const User = require("../models/User");
 
+const User = require("../models/User");
+const bcrypt = require("bcryptjs");
+const jwt = require("jsonwebtoken");
+
+// Register a new user
 const signup = async (req, res, next) => {
   try {
     const { username, email, password } = req.body;
@@ -39,4 +43,50 @@ const signup = async (req, res, next) => {
   }
 };
 
-module.exports = { signup };
+// Authenticate user and generate JWT
+const login = async (req, res, next) => {
+  try {
+    const { username, email, password } = req.body;
+
+    // Find user by username or email
+    const user = await User.findOne(
+      username ? { username } : { email: email.toLowerCase() }
+    ).select("+password");
+
+    if (!user) {
+      return res.status(401).json({
+        message: "Invalid credentials"
+      });
+    }
+
+    // Compare password with stored bcrypt hash
+    const isMatch = await bcrypt.compare(password, user.password);
+
+    if (!isMatch) {
+      return res.status(401).json({
+        message: "Invalid credentials"
+      });
+    }
+
+    // Generate JWT valid for 1 hour
+    const token = jwt.sign(
+      { userId: user._id.toString() },
+      process.env.JWT_SECRET,
+      { expiresIn: "1h" }
+    );
+
+    res.status(200).json({
+      message: "Login successful",
+      token,
+      user: {
+        id: user._id,
+        username: user.username,
+        email: user.email
+      }
+    });
+  } catch (error) {
+    next(error);
+  }
+};
+
+module.exports = { signup, login };

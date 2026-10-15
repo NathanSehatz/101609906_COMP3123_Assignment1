@@ -22,6 +22,32 @@ const signupValidation = [
     .withMessage("Password must contain a number")
 ];
 
+const loginValidation = [
+    body("username")
+      .optional()
+      .isString()
+      .notEmpty()
+      .withMessage("Username must not be empty"),
+  
+    body("email")
+      .optional()
+      .isEmail()
+      .withMessage("Enter a valid email"),
+  
+    body("password")
+      .isString()
+      .notEmpty()
+      .withMessage("Password is required"),
+  
+    body().custom((value) => {
+      if (!value.username && !value.email) {
+        throw new Error("Username or email is required");
+      }
+  
+      return true;
+    })
+  ];
+
 const validate = (req, res, next) => {
   const errors = validationResult(req);
 
@@ -35,4 +61,8 @@ const validate = (req, res, next) => {
   next();
 };
 
-module.exports = { signupValidation, validate };
+module.exports = {
+    signupValidation,
+    loginValidation,
+    validate
+  };
