@@ -13,6 +13,16 @@ Each user can add, view, update, and delete their own employee records. To keep 
 
 The application also includes security features such as password hashing, JWT authentication, input validation, and rate limiting. Error handling and logging are included to help manage problems and keep track of application activity.
 
+## Live Deployment
+
+The API is deployed on Vercel and uses MongoDB Atlas for database storage.
+
+**Base URL:** https://101609906-comp-3123-assignment1.vercel.app
+
+**Health Check:** https://101609906-comp-3123-assignment1.vercel.app/health
+
+All API endpoints can be tested using Postman with the deployed base URL.
+
 ## 2. Technologies Used
 
 - Node.js
