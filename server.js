@@ -3,6 +3,8 @@ const dotenv = require("dotenv");
 const helmet = require("helmet");
 const morgan = require("morgan");
 
+dotenv.config();
+
 const connectDB = require("./config/db");
 const logger = require("./utils/logger");
 
@@ -11,8 +13,6 @@ const employeeRoutes = require("./routes/employeeRoutes");
 
 const { apiLimiter } = require("./middleware/rateLimiter");
 const { notFound, errorHandler } = require("./middleware/errorMiddleware");
-
-dotenv.config();
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -30,6 +30,15 @@ app.use(
 app.use(express.json());
 app.use("/api", apiLimiter);
 
+app.use(async (req, res, next) => {
+  try {
+    await connectDB();
+    next();
+  } catch (error) {
+    next(error);
+  }
+});
+
 app.use("/api/v1/user", userRoutes);
 app.use("/api/v1/emp", employeeRoutes);
 
@@ -43,13 +52,22 @@ app.get("/health", (req, res) => {
 app.use(notFound);
 app.use(errorHandler);
 
-const startServer = async () => {
-  await connectDB();
+if (!process.env.VERCEL) {
+  const startServer = async () => {
+    try {
+      await connectDB();
 
-  app.listen(PORT, () => {
-    logger.info(`Server started on port ${PORT}`);
-    console.log(`Server running on http://localhost:${PORT}`);
-  });
-};
+      app.listen(PORT, () => {
+        logger.info(`Server started on port ${PORT}`);
+        console.log(`Server running on http://localhost:${PORT}`);
+      });
+    } catch (error) {
+      logger.error(`Server startup failed: ${error.message}`);
+      process.exit(1);
+    }
+  };
 
-startServer();
+  startServer();
+}
+
+module.exports = app;
